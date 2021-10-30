@@ -1,18 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import NoodleBowlImage from "../assets/noodle.jpg";
 
 export const LoadingScreen = () => {
     return (
-        <View style={styles.container}>
-            <Text>Loading Screen</Text>
-        </View>
+        <ImageBackground
+            source={NoodleBowlImage}
+            style={styles.container}
+        />
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
     },
 });
