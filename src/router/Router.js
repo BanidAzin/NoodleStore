@@ -1,5 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { View, Text } from "react-native";
+import {createStackNavigator} from '@react-navigation/stack';
+import { LoadingScreen } from "../screens/LoadingScreen";
+import { HomeScreen } from "../screens/HomeScreen";
+
+const Stack = createStackNavigator();
 
 export const Router = () => {
     const [isAppLoading, setAppLoading] = useState(true);
@@ -15,12 +20,12 @@ export const Router = () => {
     }, []);
 
     return (isAppLoading ? (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Loading Screen</Text>
-        </View>
+        <Stack.Navigator>
+          <Stack.Screen options={{headerShown: false}} name="Loading" component={LoadingScreen} />
+        </Stack.Navigator>
     ) : (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Home Screen</Text>
-        </View>
+        <Stack.Navigator>
+          <Stack.Screen options={{title: 'Noodles Stores'}} name="Loading" component={HomeScreen} />
+        </Stack.Navigator>
     ));
 };
