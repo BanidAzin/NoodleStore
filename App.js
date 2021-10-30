@@ -7,43 +7,19 @@
  */
 
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors
-} from 'react-native/Libraries/NewAppScreen';
+import { Router } from './src/router/Router';
+import { NavigationContainer } from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <View style={[styles.container, backgroundStyle]}>
-      <Text style={[styles.text, {color: isDarkMode ? Colors.light : Colors.dark}]}>
-        Noodle Store App
-      </Text>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+          <Router />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default App;
