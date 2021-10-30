@@ -10,7 +10,7 @@ export const ShimmerView = ({number = 4, shimmer, color = ['#121224', '#06060a',
 
   const {height, width} = window;
 
-  const mine = Array(number).fill(Math.random(0, 10));
+  const mine = Array(number).fill(Math.random());
 
   return mine.map((key, index) => (
     <ShimmerPlaceholder

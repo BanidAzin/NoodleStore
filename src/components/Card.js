@@ -9,7 +9,7 @@ export const Card = ({store}) => {
 
     const {height, width} = window;
 
-    console.log(Number(store.Stars));
+    // console.log(Number(store.Stars));
 
     return (
         <View style={[styles.container, {
@@ -18,7 +18,7 @@ export const Card = ({store}) => {
             borderRadius: height * 0.02,
         }]}>
             <ImageBackground 
-                source={{uri: 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/indexee3e8a8.jpeg'}}
+                source={{uri: store.imageUrl}}
                 borderTopLeftRadius={height * 0.02}
                 borderTopRightRadius={height * 0.02}
                 style={{
