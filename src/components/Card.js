@@ -4,10 +4,12 @@ import Icon from "react-native-vector-icons/Feather";
 
 import { useDimensions } from "../helpers";
 
-export const Card = props => {
+export const Card = ({store}) => {
     const {window} = useDimensions();
 
     const {height, width} = window;
+
+    console.log(Number(store.Stars));
 
     return (
         <View style={[styles.container, {
@@ -33,36 +35,33 @@ export const Card = props => {
                 >
                     <Icon name="star" size={height * 0.02}/>
                     <Text style={[styles.text, {paddingLeft: 3}]}>
-                        3.5
+                        {store.Stars === 'Nan' || store.Stars === 'NaN' ? 0 : store.Stars}
                     </Text>
                 </View>
-                <View style={styles.topTen}>
-                    <Text style={styles.text}>
-                        2016 #1
-                    </Text>
-                </View>
+                {(store['Top Ten'] !== 'Nan' && store['Top Ten'] !== 'NaN') && (
+                    <View style={styles.topTen}>
+                        <Text style={styles.text}>
+                            {store['Top Ten']}
+                        </Text>
+                    </View>
+                )}
             </ImageBackground>
 
             <View style={styles.detailsContainer}>
                 <View style={styles.detailsItem}>
                     <Text style={styles.text}>
-                        Oriental Style Instant Noodles Green Curry Flavour Jumbo Pack ("Pack")
+                        {store.Variety} {store.Style !== 'Nan' ? `(${store.Style})` : ''}
                     </Text>
                 </View>
                 <View style={styles.detailsItem}>
                     <Text style={styles.subText}>
-                        Sapporo Ichiban
+                        {store.Brand}
                     </Text>
                 </View>
                 <View style={[styles.detailsItem, {flexDirection: 'row'}]}>
                     <Icon name="flag" size={height * 0.02} color="grey" />
                     <Text style={styles.subText}>
-                        Singapore
-                    </Text>
-                </View>
-                <View style={styles.detailsItem}>
-                    <Text style={styles.subText}>
-                        2016 #1
+                        {store.Country}
                     </Text>
                 </View>
             </View>
